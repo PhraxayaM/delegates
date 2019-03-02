@@ -22,7 +22,11 @@ class FirstViewController: UIViewController {
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         //Step 5: Creating a reference of SecondViewController specifying the delegate
         if segue.identifier == "SecondViewSegue"{
-            
+            let secondVC = segue.destination as!
+                SecondViewController
+            secondVC.changeColor = { [weak self] (color) -> () in self?.view.backgroundColor = color
+                return secondVC.dismiss(animated: true, completion: nil)
+            }
         }
     }
 
